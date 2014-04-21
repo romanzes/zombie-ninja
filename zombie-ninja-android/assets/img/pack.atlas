@@ -1,0 +1,75 @@
+
+pack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+body
+  rotate: false
+  xy: 2, 78
+  size: 243, 357
+  orig: 243, 357
+  offset: 0, 0
+  index: -1
+forearm_left
+  rotate: false
+  xy: 633, 248
+  size: 126, 187
+  orig: 126, 187
+  offset: 0, 0
+  index: -1
+forearm_right
+  rotate: false
+  xy: 633, 59
+  size: 126, 187
+  orig: 126, 187
+  offset: 0, 0
+  index: -1
+head_face_fine
+  rotate: false
+  xy: 247, 190
+  size: 265, 245
+  orig: 265, 245
+  offset: 0, 0
+  index: -1
+shin_left
+  rotate: false
+  xy: 761, 235
+  size: 116, 200
+  orig: 116, 200
+  offset: 0, 0
+  index: -1
+shin_right
+  rotate: false
+  xy: 761, 33
+  size: 116, 200
+  orig: 116, 200
+  offset: 0, 0
+  index: -1
+shoulder_left
+  rotate: false
+  xy: 514, 21
+  size: 117, 203
+  orig: 117, 203
+  offset: 0, 0
+  index: -1
+shoulder_right
+  rotate: false
+  xy: 514, 226
+  size: 117, 209
+  orig: 117, 209
+  offset: 0, 0
+  index: -1
+thigh_left
+  rotate: false
+  xy: 366, 18
+  size: 117, 170
+  orig: 117, 170
+  offset: 0, 0
+  index: -1
+thigh_right
+  rotate: false
+  xy: 247, 2
+  size: 117, 186
+  orig: 117, 186
+  offset: 0, 0
+  index: -1
