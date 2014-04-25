@@ -1,4 +1,4 @@
-package ru.footmade.zombieninja;
+package ru.footmade.zombieninja.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import ru.footmade.zombieninja.Ragdoll.Part;
+import ru.footmade.zombieninja.entity.Ragdoll;
+import ru.footmade.zombieninja.entity.Ragdoll.Part;
 import aurelienribon.bodyeditor.BodyEditorLoader;
 
 import com.badlogic.gdx.files.FileHandle;

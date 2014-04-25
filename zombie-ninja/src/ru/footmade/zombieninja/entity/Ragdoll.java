@@ -1,4 +1,4 @@
-package ru.footmade.zombieninja;
+package ru.footmade.zombieninja.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 public class Ragdoll {
 	private final List<Part> parts = new ArrayList<Part>();
 	
-	protected void addPart(Part part) {
+	public void addPart(Part part) {
 		parts.add(part);
 	}
 	
