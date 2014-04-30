@@ -3,70 +3,232 @@ pack.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-body
+menu/close_normal
+  rotate: false
+  xy: 788, 526
+  size: 226, 227
+  orig: 226, 227
+  offset: 0, 0
+  index: -1
+menu/close_pressed
+  rotate: false
+  xy: 2, 2
+  size: 226, 227
+  orig: 226, 227
+  offset: 0, 0
+  index: -1
+menu/cloud
+  rotate: false
+  xy: 2, 561
+  size: 784, 192
+  orig: 784, 192
+  offset: 0, 0
+  index: 2
+menu/ninja_logo
+  rotate: false
+  xy: 2, 755
+  size: 985, 242
+  orig: 985, 242
+  offset: 0, 0
+  index: -1
+menu/play_normal
+  rotate: false
+  xy: 230, 2
+  size: 226, 227
+  orig: 226, 227
+  offset: 0, 0
+  index: -1
+menu/play_pressed
+  rotate: false
+  xy: 458, 2
+  size: 226, 227
+  orig: 226, 227
+  offset: 0, 0
+  index: -1
+menu/settings_normal
+  rotate: false
+  xy: 686, 2
+  size: 226, 227
+  orig: 226, 227
+  offset: 0, 0
+  index: -1
+menu/settings_pressed
+  rotate: false
+  xy: 704, 297
+  size: 226, 227
+  orig: 226, 227
+  offset: 0, 0
+  index: -1
+menu/zombie_logo
+  rotate: false
+  xy: 2, 231
+  size: 700, 328
+  orig: 700, 328
+  offset: 0, 0
+  index: -1
+
+pack2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+menu/back_normal
+  rotate: false
+  xy: 704, 724
+  size: 195, 178
+  orig: 195, 178
+  offset: 0, 0
+  index: -1
+menu/back_pressed
+  rotate: false
+  xy: 230, 112
+  size: 195, 178
+  orig: 195, 178
+  offset: 0, 0
+  index: -1
+menu/cloud
+  rotate: false
+  xy: 2, 504
+  size: 689, 172
+  orig: 689, 172
+  offset: 0, 0
+  index: 1
+menu/cloud
+  rotate: false
+  xy: 230, 2
+  size: 572, 108
+  orig: 572, 108
+  offset: 0, 0
+  index: 4
+menu/cloud
+  rotate: false
+  xy: 427, 116
+  size: 433, 106
+  orig: 433, 106
+  offset: 0, 0
+  index: 3
+menu/fuji
+  rotate: false
+  xy: 2, 292
+  size: 500, 210
+  orig: 500, 210
+  offset: 0, 0
+  index: -1
+menu/ground
+  rotate: false
+  xy: 504, 224
+  size: 400, 223
+  orig: 400, 223
+  offset: 0, 0
+  index: -1
+menu/mountains1
+  rotate: false
+  xy: 2, 767
+  size: 700, 135
+  orig: 700, 135
+  offset: 0, 0
+  index: -1
+menu/mountains2
+  rotate: false
+  xy: 2, 678
+  size: 700, 87
+  orig: 700, 87
+  offset: 0, 0
+  index: -1
+menu/shop_normal
+  rotate: false
+  xy: 693, 449
+  size: 226, 227
+  orig: 226, 227
+  offset: 0, 0
+  index: -1
+menu/shop_pressed
+  rotate: false
+  xy: 2, 63
+  size: 226, 227
+  orig: 226, 227
+  offset: 0, 0
+  index: -1
+
+pack3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+menu/nofilter/bgr_color
+  rotate: false
+  xy: 2, 2
+  size: 1, 480
+  orig: 1, 480
+  offset: 0, 0
+  index: -1
+
+pack4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+zombie/body
   rotate: false
   xy: 2, 78
   size: 243, 357
   orig: 243, 357
   offset: 0, 0
   index: -1
-forearm_left
+zombie/forearm_left
   rotate: false
   xy: 633, 248
   size: 126, 187
   orig: 126, 187
   offset: 0, 0
   index: -1
-forearm_right
+zombie/forearm_right
   rotate: false
   xy: 633, 59
   size: 126, 187
   orig: 126, 187
   offset: 0, 0
   index: -1
-head_face_fine
+zombie/head_face_fine
   rotate: false
   xy: 247, 190
   size: 265, 245
   orig: 265, 245
   offset: 0, 0
   index: -1
-shin_left
+zombie/shin_left
   rotate: false
   xy: 761, 235
   size: 116, 200
   orig: 116, 200
   offset: 0, 0
   index: -1
-shin_right
+zombie/shin_right
   rotate: false
   xy: 761, 33
   size: 116, 200
   orig: 116, 200
   offset: 0, 0
   index: -1
-shoulder_left
+zombie/shoulder_left
   rotate: false
   xy: 514, 21
   size: 117, 203
   orig: 117, 203
   offset: 0, 0
   index: -1
-shoulder_right
+zombie/shoulder_right
   rotate: false
   xy: 514, 226
   size: 117, 209
   orig: 117, 209
   offset: 0, 0
   index: -1
-thigh_left
+zombie/thigh_left
   rotate: false
   xy: 366, 18
   size: 117, 170
   orig: 117, 170
   offset: 0, 0
   index: -1
-thigh_right
+zombie/thigh_right
   rotate: false
   xy: 247, 2
   size: 117, 186

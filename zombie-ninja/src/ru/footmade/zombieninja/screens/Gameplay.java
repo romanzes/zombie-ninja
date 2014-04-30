@@ -1,8 +1,8 @@
 package ru.footmade.zombieninja.screens;
 
+import ru.footmade.zombieninja.CommonResources;
 import ru.footmade.zombieninja.entity.Ragdoll;
 import ru.footmade.zombieninja.util.RagdollLoader;
-
 import aurelienribon.bodyeditor.BodyEditorLoader;
 
 import com.badlogic.gdx.Gdx;
@@ -10,13 +10,12 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
 public class Gameplay extends ScreenAdapter {
 	private float scrW, scrH;
@@ -27,7 +26,6 @@ public class Gameplay extends ScreenAdapter {
 	
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private TextureAtlas atlas;
 	
 	private World world;
 	private Ragdoll zombie;
@@ -43,17 +41,18 @@ public class Gameplay extends ScreenAdapter {
 		
 		batch = new SpriteBatch();
 		
-		atlas = new TextureAtlas(Gdx.files.internal("img/pack.atlas"));
-		
 		world = new World(new Vector2(), false);
 		createGround();
 		createBody();
+		
+		Gdx.input.setInputProcessor(null);
 	}
 	
 	private void createBody() {
 		BodyEditorLoader bodyLoader = new BodyEditorLoader(Gdx.files.internal("phys/body.json"));
 		RagdollLoader ragdollLoader = new RagdollLoader(Gdx.files.internal("phys/ragdoll.json"), bodyLoader);
-		zombie = ragdollLoader.addToWorld(world, new Vector2(scrW / 2, scrH / 2), atlas, BODY_RELATIVE_WIDTH);
+		zombie = ragdollLoader.addToWorld(world, new Vector2(scrW / 2, scrH / 2),
+				CommonResources.getInstance().getAtlas(), BODY_RELATIVE_WIDTH);
 	}
 	
 	private void createGround() {
@@ -104,7 +103,6 @@ public class Gameplay extends ScreenAdapter {
 	@Override
 	public void dispose() {
 		batch.dispose();
-		atlas.dispose();
 		world.dispose();
 	}
 }
