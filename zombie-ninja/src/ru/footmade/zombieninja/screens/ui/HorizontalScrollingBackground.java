@@ -45,14 +45,14 @@ public class HorizontalScrollingBackground {
 		private float distance;
 		private final List<LayerElement> elements = new ArrayList<LayerElement>();
 		
-		public void addSingleByHeight(TextureRegion picture, float x, float y, float relativeHeight) {
-			this.addSingleByHeight(picture, x, y, relativeHeight, new Alignment(Alignment.LEFT | Alignment.BOTTOM));
+		public void addSingleByHeight(TextureRegion picture, float x, float y, float height) {
+			this.addSingleByHeight(picture, x, y, height, new Alignment(Alignment.LEFT | Alignment.BOTTOM));
 		}
 		
-		public void addSingleByHeight(TextureRegion picture, float x, float y, float relativeHeight, Alignment alignment) {
+		public void addSingleByHeight(TextureRegion picture, float x, float y, float height, Alignment alignment) {
 			LayerElement element = new LayerElement();
 			element.picture = picture;
-			element.height = scrH * relativeHeight;
+			element.height = scrH * height;
 			element.width = element.height * picture.getRegionWidth() / picture.getRegionHeight();
 			element.interval = 0;
 			element.alignment = alignment;
@@ -62,22 +62,21 @@ public class HorizontalScrollingBackground {
 			elements.add(element);
 		}
 		
-		public void addRepeatingByHeight(TextureRegion picture, float x, float y, float relativeHeight, float relativeInterval) {
-			this.addRepeatingByHeight(picture, x, y, relativeHeight, relativeInterval,
-					new Alignment(Alignment.LEFT | Alignment.BOTTOM));
+		public void addRepeatingByHeight(TextureRegion picture, float x, float y, float height, float relativeInterval) {
+			this.addRepeatingByHeight(picture, x, y, height, relativeInterval, new Alignment(Alignment.LEFT | Alignment.BOTTOM));
 		}
 		
-		public void addRepeatingByHeight(TextureRegion picture, float relativeX, float y, float relativeHeight,
+		public void addRepeatingByHeight(TextureRegion picture, float relativeX, float y, float height,
 				float relativeInterval, Alignment alignment) {
 			LayerElement element = new LayerElement();
 			element.picture = picture;
-			element.height = scrH * relativeHeight;
+			element.height = scrH * height;
 			element.width = element.height * picture.getRegionWidth() / picture.getRegionHeight();
-			float relativeWidth = element.width / scrW;
-			element.interval = relativeWidth * (relativeInterval + 1);
+			float width = element.width / scrW;
+			element.interval = width * (relativeInterval + 1);
 			element.alignment = alignment;
 			element.instanceCount = (int) (1 / element.interval) + 3;
-			element.xPosition = (relativeWidth * relativeX % element.interval) - element.interval;
+			element.xPosition = (width * relativeX % element.interval) - element.interval;
 			element.yPosition = y;
 			elements.add(element);
 		}

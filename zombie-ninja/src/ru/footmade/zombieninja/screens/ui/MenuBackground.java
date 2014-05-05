@@ -27,6 +27,19 @@ public class MenuBackground extends Actor {
 		
 		background = new HorizontalScrollingBackground(getWidth(), getHeight(), resources.getRegion("menu/nofilter/bgr_color"));
 		
+		Layer clouds = background.addLayer(3);
+		TextureRegion cloud1Pic = resources.getLinearRegion("menu/cloud1");
+		TextureRegion cloud2Pic = resources.getLinearRegion("menu/cloud2");
+		TextureRegion cloud3Pic = resources.getLinearRegion("menu/cloud3");
+		TextureRegion cloud4Pic = resources.getLinearRegion("menu/cloud4");
+		Alignment center = new Alignment(Alignment.CENTER_HORIZONTAL, Alignment.CENTER_VERTICAL);
+		clouds.addRepeatingByHeight(cloud1Pic, 0.56f, 0.64f, 0.084f, 5f, center);
+		clouds.addRepeatingByHeight(cloud1Pic, 4.7f, 0.7f, 0.084f, 5f, center);
+		clouds.addRepeatingByHeight(cloud2Pic, 3f, 0.41f, 0.094f, 4.4f, center);
+		clouds.addRepeatingByHeight(cloud2Pic, 3.47f, 0.48f, 0.094f, 4.4f, center);
+		clouds.addRepeatingByHeight(cloud3Pic, 12.2f, 0.51f, 0.05f, 6.5f, center);
+		clouds.addRepeatingByHeight(cloud4Pic, 4.7f, 0.69f, 0.05f, 6.5f, center);
+		
 		Layer fuji = background.addLayer(HorizontalScrollingBackground.INFINITY_DISTANCE);
 		fuji.addSingleByHeight(resources.getLinearRegion("menu/fuji"), FUJI_POSITION, GROUND_HEIGHT - GRASS_HEIGHT, FUJI_HEIGHT,
 				new Alignment(Alignment.CENTER_HORIZONTAL | Alignment.BOTTOM));
