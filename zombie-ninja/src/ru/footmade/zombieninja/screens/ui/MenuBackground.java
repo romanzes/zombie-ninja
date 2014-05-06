@@ -2,6 +2,7 @@ package ru.footmade.zombieninja.screens.ui;
 
 import ru.footmade.zombieninja.CommonResources;
 import ru.footmade.zombieninja.screens.ui.HorizontalScrollingBackground.Layer;
+import ru.footmade.zombieninja.screens.ui.HorizontalScrollingBackground.Layer.LayerElement;
 import ru.footmade.zombieninja.util.Alignment;
 
 import com.badlogic.gdx.Gdx;
@@ -16,6 +17,8 @@ public class MenuBackground extends Actor {
 	private static final float GRASS_HEIGHT = 0.02f;
 	private static final float FUJI_HEIGHT = 0.3f;
 	private static final float FUJI_POSITION = 0.5f;
+	private static final float CLOUD_PULSATION_RATIO = 0.9f;
+	private static final float CLOUD_PULSATION_PERIOD = 6f;
 	
 	private HorizontalScrollingBackground background;
 	
@@ -33,12 +36,16 @@ public class MenuBackground extends Actor {
 		TextureRegion cloud3Pic = resources.getLinearRegion("menu/cloud3");
 		TextureRegion cloud4Pic = resources.getLinearRegion("menu/cloud4");
 		Alignment center = new Alignment(Alignment.CENTER_HORIZONTAL, Alignment.CENTER_VERTICAL);
-		clouds.addRepeatingByHeight(cloud1Pic, 0.56f, 0.64f, 0.084f, 5f, center);
-		clouds.addRepeatingByHeight(cloud1Pic, 4.7f, 0.7f, 0.084f, 5f, center);
-		clouds.addRepeatingByHeight(cloud2Pic, 3f, 0.41f, 0.094f, 4.4f, center);
-		clouds.addRepeatingByHeight(cloud2Pic, 3.47f, 0.48f, 0.094f, 4.4f, center);
-		clouds.addRepeatingByHeight(cloud3Pic, 12.2f, 0.51f, 0.05f, 6.5f, center);
-		clouds.addRepeatingByHeight(cloud4Pic, 4.7f, 0.69f, 0.05f, 6.5f, center);
+		LayerElement[] cloudsArray = new LayerElement[6];
+		cloudsArray[0] = clouds.addRepeatingByHeight(cloud1Pic, 0.56f, 0.64f, 0.084f, 5f, center);
+		cloudsArray[1] = clouds.addRepeatingByHeight(cloud1Pic, 4.7f, 0.7f, 0.084f, 5f, center);
+		cloudsArray[2] = clouds.addRepeatingByHeight(cloud2Pic, 3f, 0.41f, 0.094f, 4.4f, center);
+		cloudsArray[3] = clouds.addRepeatingByHeight(cloud2Pic, 3.47f, 0.48f, 0.094f, 4.4f, center);
+		cloudsArray[4] = clouds.addRepeatingByHeight(cloud3Pic, 12.2f, 0.51f, 0.05f, 6.5f, center);
+		cloudsArray[5] = clouds.addRepeatingByHeight(cloud4Pic, 4.7f, 0.69f, 0.05f, 6.5f, center);
+		for (LayerElement cloud : cloudsArray) {
+			cloud.setPulsation(CLOUD_PULSATION_RATIO, CLOUD_PULSATION_PERIOD);
+		}
 		
 		Layer fuji = background.addLayer(HorizontalScrollingBackground.INFINITY_DISTANCE);
 		fuji.addSingleByHeight(resources.getLinearRegion("menu/fuji"), FUJI_POSITION, GROUND_HEIGHT - GRASS_HEIGHT, FUJI_HEIGHT,

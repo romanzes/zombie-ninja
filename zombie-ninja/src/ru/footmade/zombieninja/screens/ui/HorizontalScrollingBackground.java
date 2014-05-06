@@ -3,8 +3,12 @@ package ru.footmade.zombieninja.screens.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.footmade.zombieninja.tween.LayerElementAccessor;
 import ru.footmade.zombieninja.util.Alignment;
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -17,10 +21,13 @@ public class HorizontalScrollingBackground {
 	private TextureRegion color;
 	private final List<Layer> layers = new ArrayList<Layer>();
 	
+	private TweenManager tweenManager;
+	
 	public HorizontalScrollingBackground(float scrW, float scrH, TextureRegion color) {
 		this.scrW = scrW;
 		this.scrH = scrH;
 		this.color = color;
+		tweenManager = new TweenManager();
 	}
 	
 	public void setViewportHeight(float height) {
@@ -35,6 +42,7 @@ public class HorizontalScrollingBackground {
 	}
 	
 	public void draw(Batch batch, float viewerX, float viewerY) {
+		tweenManager.update(Gdx.graphics.getDeltaTime());
 		batch.draw(color, 0, 0, scrW, scrH);
 		for (Layer layer : layers) {
 			layer.draw(batch, viewerX, viewerY);
@@ -45,11 +53,11 @@ public class HorizontalScrollingBackground {
 		private float distance;
 		private final List<LayerElement> elements = new ArrayList<LayerElement>();
 		
-		public void addSingleByHeight(TextureRegion picture, float x, float y, float height) {
-			this.addSingleByHeight(picture, x, y, height, new Alignment(Alignment.LEFT | Alignment.BOTTOM));
+		public LayerElement addSingleByHeight(TextureRegion picture, float x, float y, float height) {
+			return this.addSingleByHeight(picture, x, y, height, new Alignment(Alignment.LEFT | Alignment.BOTTOM));
 		}
 		
-		public void addSingleByHeight(TextureRegion picture, float x, float y, float height, Alignment alignment) {
+		public LayerElement addSingleByHeight(TextureRegion picture, float x, float y, float height, Alignment alignment) {
 			LayerElement element = new LayerElement();
 			element.picture = picture;
 			element.height = scrH * height;
@@ -60,13 +68,15 @@ public class HorizontalScrollingBackground {
 			element.xPosition = x;
 			element.yPosition = y;
 			elements.add(element);
+			return element;
 		}
 		
-		public void addRepeatingByHeight(TextureRegion picture, float x, float y, float height, float relativeInterval) {
-			this.addRepeatingByHeight(picture, x, y, height, relativeInterval, new Alignment(Alignment.LEFT | Alignment.BOTTOM));
+		public LayerElement addRepeatingByHeight(TextureRegion picture, float x, float y, float height, float relativeInterval) {
+			return this.addRepeatingByHeight(picture, x, y, height, relativeInterval,
+					new Alignment(Alignment.LEFT | Alignment.BOTTOM));
 		}
 		
-		public void addRepeatingByHeight(TextureRegion picture, float relativeX, float y, float height,
+		public LayerElement addRepeatingByHeight(TextureRegion picture, float relativeX, float y, float height,
 				float relativeInterval, Alignment alignment) {
 			LayerElement element = new LayerElement();
 			element.picture = picture;
@@ -79,6 +89,7 @@ public class HorizontalScrollingBackground {
 			element.xPosition = (width * relativeX % element.interval) - element.interval;
 			element.yPosition = y;
 			elements.add(element);
+			return element;
 		}
 		
 		public void draw(Batch batch, float viewerX, float viewerY) {
@@ -90,7 +101,7 @@ public class HorizontalScrollingBackground {
 		public class LayerElement {
 			private TextureRegion picture;
 			private Alignment alignment;
-			private float width, height;
+			public float width, height;
 			private float xPosition, yPosition;
 			private float interval;
 			private int instanceCount;
@@ -131,6 +142,14 @@ public class HorizontalScrollingBackground {
 					batch.draw(picture, x - originX, y - originY, width + 1, height);
 					x += scrW * interval;
 				}
+			}
+			
+			public void setPulsation(float ratio, float duration) {
+				
+				Tween.to(this, LayerElementAccessor.SIZE, duration / 2)
+						.target(width * ratio, height * ratio)
+						.repeatYoyo(Tween.INFINITY, 0)
+						.start(tweenManager);
 			}
 		}
 	}

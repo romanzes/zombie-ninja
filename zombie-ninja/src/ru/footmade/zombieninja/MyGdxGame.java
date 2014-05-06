@@ -1,6 +1,7 @@
 package ru.footmade.zombieninja;
 
 import ru.footmade.zombieninja.screens.Menu;
+import ru.footmade.zombieninja.tween.TweenCatalogue;
 
 import com.badlogic.gdx.Game;
 
@@ -17,6 +18,7 @@ public class MyGdxGame extends Game {
 	
 	@Override
 	public void create() {
+		TweenCatalogue.register();
 		setScreen(new Menu());
 	}
 	
